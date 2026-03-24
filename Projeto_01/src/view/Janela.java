@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -38,10 +39,13 @@ public class Janela extends JFrame {
 		
 		this.cardLayout = new CardLayout();
 		
-		this.contentPane = new JPanel(this.cardLayout);
-		contentPane = new JPanel();
+		setTitle("Tela de Login");
+		contentPane = new JPanel(this.cardLayout);
+		contentPane = new TelaLogin();
+		contentPane.setBackground(new Color(240, 240, 240));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+
 
 	}
 
