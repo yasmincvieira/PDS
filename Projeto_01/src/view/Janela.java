@@ -45,8 +45,15 @@ public class Janela extends JFrame {
 		contentPane.setBackground(new Color(240, 240, 240));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+	}
 
+	public void adicionarTela(String nome, JPanel tela) {
+		this.contentPane.add(tela, nome);               
+	}
 
+	public void mostrarTela(String nome) {
+		((CardLayout) this.cardLayout).show(this.contentPane, nome);
+		this.pack();
 	}
 
 }
