@@ -9,20 +9,23 @@ import view.TelaLogin;
 public class LoginController {
 	
 	private Database db;
-	//private Object view;
-	private final TelaLogin view;
-	private final UsuarioDAO model;
-	private final Navegador navegador;
+	private TelaLogin login;
+	private UsuarioDAO user;
+	private Navegador navegador;
 	
 	// Construtor da classe
-	public LoginController (TelaLogin view, UsuarioDAO model, Navegador navegador) {
+	public LoginController (TelaLogin login, UsuarioDAO user, Navegador navegador) {
 		db = new Database();
-		this.view = view;
-		this.model = model;
+		this.login = login;
+		this.user = user;
 		this.navegador = navegador;
 		
-		this.view.entrar(e -> {
+		this.login.entrar(e -> {
 			this.navegador.navegarPara("COMPRA");
+		});
+		
+		this.login.cadastrarse(e -> {
+			navegador.navegarPara("CADASTRO");
 		});
 	}
 	

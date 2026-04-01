@@ -2,33 +2,24 @@ package view;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import java.awt.Font;
 
 public class Janela extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private CardLayout cardLayout;
+	JPanel panelTelas = new JPanel();
+	private String panelAtual;
+	
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Janela frame = new Janela();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -41,18 +32,21 @@ public class Janela extends JFrame {
 		
 		setTitle("Tela de Login");
 		contentPane = new JPanel(this.cardLayout);
-		contentPane = new TelaLogin();
 		contentPane.setBackground(new Color(240, 240, 240));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		
+	
 	}
-
 	public void adicionarTela(String nome, JPanel tela) {
-		this.contentPane.add(tela, nome);               
+		this.contentPane.add(nome, tela);               
 	}
 
 	public void mostrarTela(String nome) {
-		((CardLayout) this.cardLayout).show(this.contentPane, nome);
+		this.cardLayout.show(this.panelTelas, nome);
+
+		this.panelAtual = nome;
+
 		this.pack();
 	}
 

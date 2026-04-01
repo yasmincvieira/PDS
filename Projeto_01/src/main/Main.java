@@ -14,24 +14,28 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Janela janela = new Janela();
-		Navegador navegador = new Navegador(janela);
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		
+		//View
 		TelaLogin telaLogin = new TelaLogin();
-		LoginController loginController = new LoginController(telaLogin, usuarioDAO, navegador);
-		
 		TelaCadastroUsuario telaCadastroUsuario = new TelaCadastroUsuario();
-		CadastroUsuarioController cadastroUsuarioController = new CadastroUsuarioController();
-		
 		TelaCompra telaCompra = new TelaCompra();
+		
+		
+		Navegador navegador = new Navegador(janela);
+		LoginController loginController = new LoginController(telaLogin, usuarioDAO, navegador);
+		//CadastroUsuarioController cadastroUsuarioController = new CadastroUsuarioController(telaCadastroUsuario, usuarioDAO, navegador);
+		
+		navegador.setLoginController(loginController);
 		
 		navegador.adicionarPainel("CADASTRO", telaCadastroUsuario);
 		navegador.adicionarPainel("COMPRA", telaCompra);
+		navegador.adicionarPainel("LOGIN", telaLogin);
 		
 		janela.setLocationRelativeTo(null);
 		janela.setVisible(true);
 		
-		navegador.navegarPara("COMPRA");
+//		navegador.navegarPara("COMPRA");
 		
 		
 	}

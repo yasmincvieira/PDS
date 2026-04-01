@@ -16,27 +16,15 @@ import java.awt.event.ActionEvent;
 public class TelaLogin extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField tfNome;
-	private JTextField tfCPF;
-	private LoginController loginController;
-	private Object btnEntrar;
-	private Object btnCadastrarSe;
-	private TelaLogin view;
-	private LoginController controller;
+	private JTextField tfNome, tfCPF;
+	private JButton btnEntrar, btnCadastrarSe;
+	
+	
 	/**
 	 * Create the panel.
 	 */
 	public TelaLogin() {
 		getComponents();
-	    UsuarioDAO model = new UsuarioDAO();
-	    Navegador navegador = new Navegador(null);
-
-	    controller = new LoginController(this, model, navegador);
-	  
-		
-//		UsuarioDAO model = null;
-//		Navegador navegador = null;
-		loginController = new LoginController(this.view, model, navegador);
 		
 		setBounds(100, 100, 900, 600);
 		setLayout(new MigLayout("", "[grow][grow 50][grow][grow]", "[grow][][grow 80][][][][grow 70][grow 10][grow]"));
@@ -49,31 +37,25 @@ public class TelaLogin extends JPanel {
 		tfNomeL.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(tfNomeL, "cell 1 3,alignx center");
 		
-		tfNome = new JTextField();
-		tfNome.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		this.tfNome = new JTextField();
+		this.tfNome.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(tfNome, "cell 2 3,growx");
-		tfNome.setColumns(10);
+		this.tfNome.setColumns(10);
 		
 		JLabel tfCPFL = new JLabel("CPF:");
 		tfCPFL.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(tfCPFL, "cell 1 5,alignx center");
 		
-		tfCPF = new JTextField();
-		tfCPF.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		this.tfCPF = new JTextField();
+		this.tfCPF.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(tfCPF, "cell 2 5,growx");
-		tfCPF.setColumns(10);
+		this.tfCPF.setColumns(10);
 		
-		JButton btnEntrar = new JButton("Entrar");
+		
+		
+		btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				if (btnEntrar != null) {
-			        ActionListener listener = null;
-					btnEntrar.addActionListener(listener);  
-			    }
-				
-				loginController.FazLogin(tfNomeL.getText(), tfCPFL.getText());
-				
 			}
 		});
 		btnEntrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -86,49 +68,35 @@ public class TelaLogin extends JPanel {
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel.add(lblNewLabel_3);
 		
-		JButton btnCadastrarSe = new JButton("Cadastrar-se");
-		btnCadastrarSe.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				
-				
-			}
-		});
+		btnCadastrarSe = new JButton("Cadastrar-Se");
 		btnCadastrarSe.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel.add(btnCadastrarSe);
-
+		
+		
 	}
+
 	
-	/**
-	 * Método responsável por recuperar o texto digitado no campo de texto 'nome'.
-	 * @return Texto digitado no campo de texto 'nome'.
-	 */
 	public String getNome() {
 		return this.tfNome.getText();
 	}
 	
-	/**
-	 * Método responsável por recuperar o texto digitado no campo de texto 'nome'.
-	 * @return Texto digitado no campo de texto 'nome'.
-	 */
 	public String getCPF() {
 		return this.tfCPF.getText();
 	}
 	
-	/**
-	 * Método responsável por 'registrar' a ação do botão 'próximo'.
-	 * @param actionListener Ação que será realizada ao clicar no botão 'próximo'.
-	 */
 	public void entrar(ActionListener actionListener) {
-		((JTextField) this.btnEntrar).addActionListener(actionListener);
+		this.btnEntrar.addActionListener(actionListener);
 	}
 	
-	/**
-	 * Método responsável por limpar os campos de texto do formulário.
-	 */
+	public void cadastrarse(ActionListener actionListener) {
+		this.btnCadastrarSe.addActionListener(actionListener);
+	}
+	
 	public void limparFormulario(){
 		this.tfNome.setText("");
 		this.tfCPF.setText("");
 	}
+	
+	
 
 }

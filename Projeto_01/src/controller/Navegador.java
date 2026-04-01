@@ -7,11 +7,8 @@ import view.Janela;
 public class Navegador {
 	
 	private Janela janela;
+	private LoginController loginController;
 
-	/**
-	 * Construtor da classe.
-	 * @param janela Referência ao JFrame.
-	 */
 	public Navegador(Janela janela) {
 		this.janela = janela;
 	}
@@ -39,6 +36,15 @@ public class Navegador {
 	 */
 	public void sair() {
 		this.janela.dispose();
+	}
+
+	public LoginController getloginController() {
+		return getloginController();
+	}
+
+	public void setLoginController(LoginController loginController) {
+		this.loginController = loginController;
+		
 	}
 
 }
