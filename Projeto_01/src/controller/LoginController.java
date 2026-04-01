@@ -23,7 +23,7 @@ public class LoginController {
 		
 		this.view.entrar(e -> {
 			this.navegador.navegarPara("COMPRA");
-		});;
+		});
 	}
 	
 	public void FazLogin (String Nome, String Cpf) {

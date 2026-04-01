@@ -5,6 +5,9 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import controller.LoginController;
+import controller.Navegador;
+import model.UsuarioDAO;
+
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -17,13 +20,23 @@ public class TelaLogin extends JPanel {
 	private JTextField tfCPF;
 	private LoginController loginController;
 	private Object btnEntrar;
-
+	private Object btnCadastrarSe;
+	private TelaLogin view;
+	private LoginController controller;
 	/**
 	 * Create the panel.
 	 */
 	public TelaLogin() {
+		getComponents();
+	    UsuarioDAO model = new UsuarioDAO();
+	    Navegador navegador = new Navegador(null);
+
+	    controller = new LoginController(this, model, navegador);
+	  
 		
-		loginController = new LoginController(null, null, null);
+//		UsuarioDAO model = null;
+//		Navegador navegador = null;
+		loginController = new LoginController(this.view, model, navegador);
 		
 		setBounds(100, 100, 900, 600);
 		setLayout(new MigLayout("", "[grow][grow 50][grow][grow]", "[grow][][grow 80][][][][grow 70][grow 10][grow]"));
@@ -54,6 +67,11 @@ public class TelaLogin extends JPanel {
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				if (btnEntrar != null) {
+			        ActionListener listener = null;
+					btnEntrar.addActionListener(listener);  
+			    }
+				
 				loginController.FazLogin(tfNomeL.getText(), tfCPFL.getText());
 				
 			}
@@ -68,9 +86,16 @@ public class TelaLogin extends JPanel {
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel.add(lblNewLabel_3);
 		
-		JButton btnNewButton = new JButton("Cadastrar-se");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		panel.add(btnNewButton);
+		JButton btnCadastrarSe = new JButton("Cadastrar-se");
+		btnCadastrarSe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+			}
+		});
+		btnCadastrarSe.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		panel.add(btnCadastrarSe);
 
 	}
 	
