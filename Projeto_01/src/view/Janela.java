@@ -4,7 +4,6 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -16,14 +15,11 @@ public class Janela extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private CardLayout cardLayout;
-	JPanel panelTelas = new JPanel();
-	private String panelAtual;
+
+
 	
 
 
-	/**
-	 * Create the frame.
-	 */
 	public Janela() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
@@ -43,10 +39,7 @@ public class Janela extends JFrame {
 	}
 
 	public void mostrarTela(String nome) {
-		this.cardLayout.show(this.panelTelas, nome);
-
-		this.panelAtual = nome;
-
+		this.cardLayout.show(this.contentPane, nome);
 		this.pack();
 	}
 

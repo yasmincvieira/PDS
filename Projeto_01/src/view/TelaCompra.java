@@ -33,40 +33,40 @@ public class TelaCompra extends JPanel {
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
 			},
 			new String[] {
-				"New column", "New column", "New column"
+				"Produto", "Pre\u00E7o"
 			}
 		));
 		scrollPane.setViewportView(table);
 		
 		JButton btnNewButton_1 = new JButton("Visualizar Produto");
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		add(btnNewButton_1, "cell 3 3 2 1,alignx center");
+		add(btnNewButton_1, "cell 3 5 2 1,alignx center");
 		
 		JButton btnNewButton = new JButton("Adicionar ao Carrinho");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		add(btnNewButton, "cell 3 5 2 1,alignx center");
+		add(btnNewButton, "cell 3 6 2 1,alignx center");
 		
 		JLabel lblNewLabel_1 = new JLabel("Total a pagar:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));

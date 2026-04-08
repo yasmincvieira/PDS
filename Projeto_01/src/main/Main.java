@@ -26,7 +26,6 @@ public class Main {
 		LoginController loginController = new LoginController(telaLogin, usuarioDAO, navegador);
 		//CadastroUsuarioController cadastroUsuarioController = new CadastroUsuarioController(telaCadastroUsuario, usuarioDAO, navegador);
 		
-		navegador.setLoginController(loginController);
 		
 		navegador.adicionarPainel("CADASTRO", telaCadastroUsuario);
 		navegador.adicionarPainel("COMPRA", telaCompra);
@@ -35,7 +34,7 @@ public class Main {
 		janela.setLocationRelativeTo(null);
 		janela.setVisible(true);
 		
-//		navegador.navegarPara("COMPRA");
+		navegador.navegarPara("LOGIN");
 		
 		
 	}
