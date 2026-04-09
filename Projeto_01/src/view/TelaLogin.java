@@ -1,6 +1,8 @@
 package view;
 
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -20,9 +22,6 @@ public class TelaLogin extends JPanel {
 	private JButton btnEntrar, btnCadastrarSe;
 	
 	
-	/**
-	 * Create the panel.
-	 */
 	public TelaLogin() {
 		getComponents();
 		
@@ -76,12 +75,20 @@ public class TelaLogin extends JPanel {
 	}
 
 	
-	public String getNome() {
-		return this.tfNome.getText();
+	public JTextField gettfNome() {
+		return tfNome;
 	}
-	
-	public String getCPF() {
-		return this.tfCPF.getText();
+    
+    public void settfNome(JTextField tfNome) {
+		this.tfNome = tfNome;
+	}
+    
+    public JTextField gettfCPF() {
+		return tfCPF;
+	}
+    
+    public void settfCPF(JTextField tfCPF) {
+		this.tfCPF = tfCPF;
 	}
 	
 	public void entrar(ActionListener actionListener) {

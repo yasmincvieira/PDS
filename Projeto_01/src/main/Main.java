@@ -24,7 +24,7 @@ public class Main {
 		
 		Navegador navegador = new Navegador(janela);
 		LoginController loginController = new LoginController(telaLogin, usuarioDAO, navegador);
-		//CadastroUsuarioController cadastroUsuarioController = new CadastroUsuarioController(telaCadastroUsuario, usuarioDAO, navegador);
+		CadastroUsuarioController cadastroUsuarioController = new CadastroUsuarioController(telaCadastroUsuario, usuarioDAO, navegador);
 		
 		
 		navegador.adicionarPainel("CADASTRO", telaCadastroUsuario);

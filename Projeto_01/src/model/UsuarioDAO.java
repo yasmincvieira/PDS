@@ -9,42 +9,41 @@ import java.util.List;
 
 public class UsuarioDAO {
 
-    // CREATE - Adicionar um novo usuário
-    public void adicionarUsuario(Usuario usuario) {
-        String sql = "INSERT INTO usuarios (nome, email) VALUES (?, ?)";
-        Connection conexao = null;
-        PreparedStatement pstm = null;
+	public void adicionarUsuario(Usuario usuario) {
+	    String sql = "INSERT INTO usuarios (nome, cpf) VALUES (?, ?)";
 
-        try {
-            conexao = BancoDeDados.conectar();
-            pstm = conexao.prepareStatement(sql);
-            pstm.setString(1, usuario.getNome());
-            pstm.setString(2, usuario.getEmail());
-            pstm.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-        	BancoDeDados.desconectar(conexao);
-            if (pstm != null) {
-                try {
-                    pstm.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+	    try (Connection conexao = BancoDeDados.conectar();
+	         PreparedStatement pstm = conexao.prepareStatement(sql)) {
 
-    // READ - Listar todos os usuários
+	        if (conexao == null) {
+	            System.err.println("Erro: Conexão nula no adicionarUsuario!");
+	            return;
+	        }
+	        pstm.setString(1, usuario.getNome());
+	        pstm.setString(2, usuario.getCPF());
+	        pstm.executeUpdate();
+	        
+	        System.out.println("Usuário salvo no banco com sucesso!");
+
+	    } catch (SQLException e) {
+	        System.err.println("Erro ao inserir usuário: " + e.getMessage());
+	        e.printStackTrace();
+	    }
+	}
+	
     public List<Usuario> listarUsuarios() {
         String sql = "SELECT * FROM usuarios";
         List<Usuario> usuarios = new ArrayList<>();
         Connection conexao = null;
         PreparedStatement pstm = null;
-        ResultSet rset = null; // Objeto que guarda o resultado da consulta
+        ResultSet rset = null;
 
         try {
             conexao = BancoDeDados.conectar();
+            if (conexao == null) {
+                System.err.println("Falha na conexão! Verifique o Driver e as credenciais.");
+                return usuarios; 
+            }
             pstm = conexao.prepareStatement(sql);
             rset = pstm.executeQuery();
 
@@ -52,19 +51,17 @@ public class UsuarioDAO {
                 Usuario usuario = new Usuario();
                 usuario.setId(rset.getInt("id"));
                 usuario.setNome(rset.getString("nome"));
-                usuario.setEmail(rset.getString("email"));
+                usuario.setCPF(rset.getString("cpf"));
                 usuarios.add(usuario);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
         	BancoDeDados.desconectar(conexao);
-            // Fechar recursos
         }
         return usuarios;
     }
 
-    // UPDATE - Atualizar um usuário existente
     public void atualizarUsuario(Usuario usuario) {
         String sql = "UPDATE usuarios SET nome = ?, email = ? WHERE id = ?";
         Connection conexao = null;
@@ -74,7 +71,7 @@ public class UsuarioDAO {
             conexao = BancoDeDados.conectar();
             pstm = conexao.prepareStatement(sql);
             pstm.setString(1, usuario.getNome());
-            pstm.setString(2, usuario.getEmail());
+            pstm.setString(2, usuario.getCPF());
             pstm.setInt(3, usuario.getId());
             pstm.executeUpdate();
         } catch (SQLException e) {
@@ -84,7 +81,6 @@ public class UsuarioDAO {
         }
     }
 
-    // DELETE - Excluir um usuário pelo ID
     public void excluirUsuario(int id) {
         String sql = "DELETE FROM usuarios WHERE id = ?";
         Connection conexao = null;
@@ -101,4 +97,4 @@ public class UsuarioDAO {
         	BancoDeDados.desconectar(conexao);
         }
     }
-}
+    }

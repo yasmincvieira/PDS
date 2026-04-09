@@ -6,13 +6,16 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+
 import javax.swing.JRadioButton;
 
 public class TelaCadastroUsuario extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField tfNomeC, tfCPFC;
+	private JRadioButton rbAdm, rbUsuario;
+	private JButton btnCadastrar;
 
 	/**
 	 * Create the panel.
@@ -29,19 +32,19 @@ public class TelaCadastroUsuario extends JPanel {
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(lblNewLabel_1, "cell 1 3,alignx center");
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		add(textField, "cell 2 3,growx");
-		textField.setColumns(10);
+		tfNomeC = new JTextField();
+		tfNomeC.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		add(tfNomeC, "cell 2 3,growx");
+		tfNomeC.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("CPF:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(lblNewLabel_2, "cell 1 5,alignx center");
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		add(textField_1, "cell 2 5,growx");
-		textField_1.setColumns(10);
+		tfCPFC = new JTextField();
+		tfCPFC.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		add(tfCPFC, "cell 2 5,growx");
+		tfCPFC.setColumns(10);
 		
 		JPanel panel = new JPanel();
 		add(panel, "cell 1 6 2 1,growx,aligny center");
@@ -50,18 +53,38 @@ public class TelaCadastroUsuario extends JPanel {
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel.add(lblNewLabel_3);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Administrador");
-		rdbtnNewRadioButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		panel.add(rdbtnNewRadioButton);
+		rbAdm = new JRadioButton("Administrador");
+		rbAdm.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		panel.add(rbAdm);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Usuário");
-		rdbtnNewRadioButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		panel.add(rdbtnNewRadioButton_1);
+		rbUsuario = new JRadioButton("Usuário");
+		rbUsuario.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		panel.add(rbUsuario);
 		
-		JButton btnNewButton = new JButton("Cadastrar");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		add(btnNewButton, "cell 1 7 2 1,alignx center");
+		btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		add(btnCadastrar, "cell 1 7 2 1,alignx center");
 
+	}
+
+	public JTextField gettfNomeC() {
+		return tfNomeC;
+	}
+    
+    public void settfNomeC(JTextField tfNomeC) {
+		this.tfNomeC = tfNomeC;
+	}
+    
+    public JTextField gettfCPFC() {
+		return tfCPFC;
+	}
+    
+    public void settfCPFC(JTextField tfCPFC) {
+		this.tfCPFC = tfCPFC;
+	}
+    
+    public void cadastrar(ActionListener actionListener) {
+		this.btnCadastrar.addActionListener(actionListener);
 	}
 
 }

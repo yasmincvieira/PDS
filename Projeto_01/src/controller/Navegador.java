@@ -1,15 +1,22 @@
 package controller;
 
 import javax.swing.JPanel;
-
 import view.Janela;
+import view.TelaCadastroUsuario;
+import view.TelaLogin;
 
 public class Navegador {
 	
 	private Janela janela;
+	private TelaLogin login;
+	private LoginController loginController;
+	private TelaCadastroUsuario cadastro;
+	private CadastroUsuarioController cadastroController;
+	
 
 	public Navegador(Janela janela) {
 		this.janela = janela;
+		this.login = login;
 	}
 
 	public void adicionarPainel(String nome, JPanel tela) {
@@ -25,7 +32,19 @@ public class Navegador {
 	}
 
 	public LoginController getloginController() {
-		return getloginController();
+		return loginController;
+	}
+	
+	public void setLoginController(LoginController loginController) {
+		this.loginController = loginController;
+	}
+	
+	public CadastroUsuarioController getCadastroController() {
+		return cadastroController;
+	}
+	
+	public void setCadastroController(CadastroUsuarioController cadastroController) {
+		this.cadastroController = cadastroController;	
 	}
 
 

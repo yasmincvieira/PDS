@@ -3,15 +3,15 @@ package model;
 public class Usuario {
     private int id;
     private String nome;
-    private String email;
+    private String CPF;
 
     // Construtores
     public Usuario() {}
 
-    public Usuario(int id, String nome, String email) {
+    public Usuario(int id, String nome, String CPF) {
         this.id = id;
         this.nome = nome;
-        this.email = email;
+        this.CPF = CPF;
     }
 
     // Getters e Setters
@@ -31,13 +31,14 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCPF() {
+        return CPF;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
     }
+
 
 	
 }

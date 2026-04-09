@@ -1,27 +1,24 @@
 package controller;
 
 import java.util.List;
-
+import javax.swing.JOptionPane;
 import model.UsuarioDAO;
 import model.Usuario;
 import view.TelaLogin;
 
 public class LoginController {
 	
-	private Database db;
 	private TelaLogin login;
 	private UsuarioDAO user;
 	private Navegador navegador;
 	
-	// Construtor da classe
 	public LoginController (TelaLogin login, UsuarioDAO user, Navegador navegador) {
-		db = new Database();
 		this.login = login;
 		this.user = user;
 		this.navegador = navegador;
 		
 		this.login.entrar(e -> {
-			this.navegador.navegarPara("COMPRA");
+			verificarCadastroUsuario();
 		});
 		
 		this.login.cadastrarse(e -> {
@@ -29,20 +26,38 @@ public class LoginController {
 		});
 	}
 	
-	public void FazLogin (String Nome, String Cpf) {
-		List<Usuario> retornoDoBanco = db.executarSQL("SELECT * FROM usuarios where nome = '" + Nome + "' and cpf = '" + Cpf + "'");
-		// Se o retorno do banco não for vazio
-		if(!retornoDoBanco.isEmpty()) {
-			System.out.println(retornoDoBanco);
+	private void verificarCadastroUsuario() {
+		List<Usuario> usuarios = user.listarUsuarios();
+		
+		String nomeDigitado = login.gettfNome().getText();
+		String cpfDigitado = login.gettfCPF().getText();
+		if(nomeDigitado.isEmpty() || cpfDigitado.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Preencha todos os campos");
 		}
 		else {
-			System.out.println("Usuario não encontrado");
+			boolean usuarioEncontrado = false;
+			
+			for(Usuario u : usuarios) {
+			    if(u.getNome().trim().equalsIgnoreCase(nomeDigitado.trim()) && 
+			       u.getCPF().trim().equals(cpfDigitado.trim())){
+			        usuarioEncontrado = true;
+			        break;
+			    }
+			}
+			
+			if(usuarioEncontrado) {
+				JOptionPane.showMessageDialog(null, "Login realizado com sucesso!");
+				this.navegador.navegarPara("COMPRA");
+				limparCamposLogin();
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Usuário ou CPF não encontrados");
+			}
 		}
 	}
 	
-	public void CriaUsuario(String Email, String Senha, String Nome) {
-		System.out.println("Criando Usuário");
+	public void limparCamposLogin() {
+		login.gettfNome().setText("");
+		login.gettfCPF().setText("");
 	}
-	
-	
 }
