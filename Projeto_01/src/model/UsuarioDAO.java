@@ -10,7 +10,7 @@ import java.util.List;
 public class UsuarioDAO {
 
 	public void adicionarUsuario(Usuario usuario) {
-	    String sql = "INSERT INTO usuarios (nome, cpf) VALUES (?, ?)";
+	    String sql = "INSERT INTO usuarios (nome, cpf, ind) VALUES (?, ?, ?)";
 
 	    try (Connection conexao = BancoDeDados.conectar();
 	         PreparedStatement pstm = conexao.prepareStatement(sql)) {
@@ -21,6 +21,7 @@ public class UsuarioDAO {
 	        }
 	        pstm.setString(1, usuario.getNome());
 	        pstm.setString(2, usuario.getCPF());
+	        pstm.setBoolean(3, usuario.isInd());
 	        pstm.executeUpdate();
 	        
 	        System.out.println("Usuário salvo no banco com sucesso!");
@@ -31,35 +32,53 @@ public class UsuarioDAO {
 	    }
 	}
 	
-    public List<Usuario> listarUsuarios() {
-        String sql = "SELECT * FROM usuarios";
-        List<Usuario> usuarios = new ArrayList<>();
-        Connection conexao = null;
-        PreparedStatement pstm = null;
-        ResultSet rset = null;
-
-        try {
-            conexao = BancoDeDados.conectar();
-            if (conexao == null) {
-                System.err.println("Falha na conexão! Verifique o Driver e as credenciais.");
-                return usuarios; 
-            }
-            pstm = conexao.prepareStatement(sql);
-            rset = pstm.executeQuery();
-
-            while (rset.next()) {
-                Usuario usuario = new Usuario();
-                usuario.setId(rset.getInt("id"));
-                usuario.setNome(rset.getString("nome"));
-                usuario.setCPF(rset.getString("cpf"));
-                usuarios.add(usuario);
+	public Usuario validarLogin(String nome, String cpf) {
+        String sql = "SELECT * FROM usuarios WHERE nome = ? AND cpf = ?";
+        try (Connection conexao = BancoDeDados.conectar();
+             PreparedStatement pstm = conexao.prepareStatement(sql)) {
+            
+            pstm.setString(1, nome);
+            pstm.setString(2, cpf);
+            
+            try (ResultSet rset = pstm.executeQuery()) {
+                if (rset.next()) {
+                    Usuario usuario = new Usuario();
+                    usuario.setId(rset.getInt("id"));
+                    usuario.setNome(rset.getString("nome"));
+                    usuario.setCPF(rset.getString("cpf"));
+                    usuario.setInd(rset.getBoolean("ind"));
+                    return usuario;
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-        	BancoDeDados.desconectar(conexao);
         }
-        return usuarios;
+        return null;
+    }
+	
+    public List<Usuario> listarUsuarios() {
+        String sql = "SELECT * FROM usuarios";
+        List<Usuario> usuarios = new ArrayList<>();
+//        Connection conexao = null;
+//        PreparedStatement pstm = null;
+//        ResultSet rset = null;
+
+        try (Connection conexao = BancoDeDados.conectar();
+                PreparedStatement pstm = conexao.prepareStatement(sql);
+                ResultSet rset = pstm.executeQuery()) {
+
+               while (rset.next()) {
+                   Usuario usuario = new Usuario();
+                   usuario.setId(rset.getInt("id"));
+                   usuario.setNome(rset.getString("nome"));
+                   usuario.setCPF(rset.getString("cpf"));
+                   usuario.setInd(rset.getBoolean("ind"));
+                   usuarios.add(usuario);
+               }
+           } catch (SQLException e) {
+               e.printStackTrace();
+           }
+           return usuarios;
     }
 
     public void atualizarUsuario(Usuario usuario) {
@@ -73,6 +92,7 @@ public class UsuarioDAO {
             pstm.setString(1, usuario.getNome());
             pstm.setString(2, usuario.getCPF());
             pstm.setInt(3, usuario.getId());
+            pstm.setInt(4, usuario.getId());
             pstm.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

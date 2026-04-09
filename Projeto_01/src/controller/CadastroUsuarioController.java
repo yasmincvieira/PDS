@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.List;
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import model.Usuario;
 import model.UsuarioDAO;
@@ -8,7 +9,6 @@ import view.TelaCadastroUsuario;
 
 public class CadastroUsuarioController {
 	
-	private Database db;
 	private TelaCadastroUsuario cadastro;
 	private UsuarioDAO user;
 	private Navegador navegador;
@@ -30,8 +30,10 @@ public class CadastroUsuarioController {
 		
 		String nome = cadastro.gettfNomeC().getText();
 		String cpf = cadastro.gettfCPFC().getText();
+		boolean isAdm = cadastro.getrbAdm().isSelected();
+		boolean isUser = cadastro.getrbUsuario().isSelected();
 		
-		if(nome.isEmpty() || cpf.isEmpty()) {
+		if(nome.isEmpty() || cpf.isEmpty() || (!isAdm && !isUser)) {
 			JOptionPane.showMessageDialog(null, "Preencha todos os campos");
 			return; 
 		}
@@ -39,6 +41,7 @@ public class CadastroUsuarioController {
 		Usuario novoUsuario = new Usuario();
 	    novoUsuario.setNome(nome);
 	    novoUsuario.setCPF(cpf);
+	    novoUsuario.setInd(isAdm);
 	  
 	    user.adicionarUsuario(novoUsuario); 
 	    
@@ -49,11 +52,12 @@ public class CadastroUsuarioController {
 	    limparCamposCadastro();
 	}
 	
+	
 	public void limparCamposCadastro() {
 		cadastro.gettfNomeC().setText("");
 		cadastro.gettfCPFC().setText("");
 	}
-
+	
 		
 	}
 

@@ -4,14 +4,16 @@ public class Usuario {
     private int id;
     private String nome;
     private String CPF;
+    private boolean ind;
 
     // Construtores
     public Usuario() {}
 
-    public Usuario(int id, String nome, String CPF) {
+    public Usuario(int id, String nome, String CPF, boolean ind) {
         this.id = id;
         this.nome = nome;
         this.CPF = CPF;
+        this.ind = ind;
     }
 
     // Getters e Setters
@@ -39,6 +41,12 @@ public class Usuario {
         this.CPF = CPF;
     }
 
+    public boolean isInd() {
+        return ind;
+    }
 
+    public void setInd(boolean ind) {
+        this.ind = ind;
+    }
 	
 }

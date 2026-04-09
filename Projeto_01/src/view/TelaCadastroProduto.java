@@ -8,6 +8,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
 public class TelaCadastroProduto extends JPanel {
@@ -22,11 +24,9 @@ public class TelaCadastroProduto extends JPanel {
 	private JButton btnCadastrarP;
 	private JButton btnEditar;
 	private JButton btnRemover;
-	private JButton btnNewButton;
+	private JButton btnVisualizar;
 
-	/**
-	 * Create the panel.
-	 */
+
 	public TelaCadastroProduto() {
 		setBounds(100, 100, 900, 600);
 		setLayout(new MigLayout("", "[grow 80][grow 50][grow][grow 80]", "[grow][][][][][][43.00,grow][100px:n:200px][grow]"));
@@ -73,9 +73,9 @@ public class TelaCadastroProduto extends JPanel {
 		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel.add(btnEditar);
 		
-		btnNewButton = new JButton("Visualizar");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		panel.add(btnNewButton);
+		btnVisualizar = new JButton("Visualizar");
+		btnVisualizar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		panel.add(btnVisualizar);
 		
 		btnRemover = new JButton("Remover");
 		btnRemover.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -115,6 +115,39 @@ public class TelaCadastroProduto extends JPanel {
 		));
 		scrollPane.setViewportView(table);
 
+	}
+	public JTextField gettfProduto() {
+		return tfProduto;
+	}
+	
+	 public void settfProduto(JTextField tfProduto) {
+		this.tfProduto = tfProduto;
+	}
+
+	public JTextField gettfPreco() {
+		return tfPreco;
+	}
+	
+	public void settfPreco(JTextField tfPreco) {
+		this.tfPreco = tfPreco;
+	}
+
+	public JTextField gettfQtd() {
+		return tfQtd;
+	}
+	
+	public void settfQtd(JTextField tfQtd) {
+		this.tfQtd = tfQtd;
+	}
+
+	public void cadastrarProduto(ActionListener actionListener) {
+		this.btnCadastrarP.addActionListener(actionListener);
+	}
+
+	public void limparFormulario() {
+		tfProduto.setText("");
+		tfPreco.setText("");
+		tfQtd.setText("");
 	}
 
 }

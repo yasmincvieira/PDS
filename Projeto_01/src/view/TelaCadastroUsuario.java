@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -61,6 +62,11 @@ public class TelaCadastroUsuario extends JPanel {
 		rbUsuario.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel.add(rbUsuario);
 		
+		ButtonGroup grupo = new ButtonGroup();
+		grupo.add(rbAdm);
+		grupo.add(rbUsuario);
+		
+		
 		btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(btnCadastrar, "cell 1 7 2 1,alignx center");
@@ -82,6 +88,23 @@ public class TelaCadastroUsuario extends JPanel {
     public void settfCPFC(JTextField tfCPFC) {
 		this.tfCPFC = tfCPFC;
 	}
+    
+    public JRadioButton getrbAdm() {
+		return rbAdm;
+	}
+    
+    public void setrbAdm(JRadioButton rbAdm) {
+    	this.rbAdm = rbAdm;
+    }
+
+	public JRadioButton getrbUsuario() {
+		return rbUsuario;
+	}
+	
+	public void setrbUsuario(JRadioButton rbUsuario) {
+	    	this.rbUsuario = rbUsuario;
+	    }
+
     
     public void cadastrar(ActionListener actionListener) {
 		this.btnCadastrar.addActionListener(actionListener);

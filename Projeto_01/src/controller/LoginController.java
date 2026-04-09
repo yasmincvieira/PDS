@@ -34,27 +34,24 @@ public class LoginController {
 		if(nomeDigitado.isEmpty() || cpfDigitado.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Preencha todos os campos");
 		}
-		else {
-			boolean usuarioEncontrado = false;
 			
-			for(Usuario u : usuarios) {
-			    if(u.getNome().trim().equalsIgnoreCase(nomeDigitado.trim()) && 
-			       u.getCPF().trim().equals(cpfDigitado.trim())){
-			        usuarioEncontrado = true;
-			        break;
-			    }
-			}
-			
-			if(usuarioEncontrado) {
-				JOptionPane.showMessageDialog(null, "Login realizado com sucesso!");
-				this.navegador.navegarPara("COMPRA");
-				limparCamposLogin();
-			}
-			else {
-				JOptionPane.showMessageDialog(null, "Usuário ou CPF não encontrados");
-			}
-		}
-	}
+			Usuario usuario = user.validarLogin(nomeDigitado, cpfDigitado);
+	        
+	        if(usuario != null) {
+	            JOptionPane.showMessageDialog(null, "Login realizado com sucesso! Bem-vindo, " + usuario.getNome());
+	            
+	            if (usuario.isInd()) {
+	                this.navegador.navegarPara("CADASTRO_PRODUTOS");
+	            } else {
+	                this.navegador.navegarPara("COMPRA");
+	            }
+	            
+	            limparCamposLogin();
+	        }
+	        else {
+	            JOptionPane.showMessageDialog(null, "Usuário ou CPF não encontrados");
+	        }
+	    }
 	
 	public void limparCamposLogin() {
 		login.gettfNome().setText("");

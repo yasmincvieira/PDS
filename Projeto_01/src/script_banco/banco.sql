@@ -6,8 +6,17 @@ USE cadastro_db;
 CREATE TABLE IF NOT EXISTS usuarios (
 	id int auto_increment primary key,
     nome varchar(255) not null,
-    cpf varchar(11) not null unique
+    cpf varchar(11) not null unique,
+    ind boolean not null
 );
 
-INSERT INTO usuarios (nome, cpf) VALUES
-('Yasmin Vieira', '12345678900');
+SELECT * FROM cadastro_db.usuarios;
+
+CREATE TABLE IF NOT EXISTS produtos (
+	id int auto_increment primary key,
+    nome varchar(255) not null,
+    preco decimal(0.00) not null,
+    qtd int(100) not null
+);
+
+SELECT * FROM cadastro_db.produtos;
