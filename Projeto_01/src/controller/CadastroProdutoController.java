@@ -100,7 +100,7 @@ public class CadastroProdutoController {
         if (confirmacao == JOptionPane.YES_OPTION) {
             Produto produto = listaProdutos.get(linhaSelecionada);
             produtoDAO.excluirProduto(produto.getId());
-            JOptionPane.showMessageDialog(telaCadastroProduto, "Produto removido com sucesso!");
+            JOptionPane.showMessageDialog(telaCadastroProduto, "Produto removido com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             atualizarTabela();
             cancelarEdicao();
         }
@@ -138,7 +138,7 @@ public class CadastroProdutoController {
             produtoEmEdicao.setQuantidade(Integer.parseInt(qtdStr));
 
             produtoDAO.atualizarProduto(produtoEmEdicao);
-            JOptionPane.showMessageDialog(telaCadastroProduto, "Produto atualizado com sucesso!");
+            JOptionPane.showMessageDialog(telaCadastroProduto, "Produto atualizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             
             cancelarEdicao();
             atualizarTabela();

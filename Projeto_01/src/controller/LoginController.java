@@ -32,13 +32,13 @@ public class LoginController {
 		String nomeDigitado = login.gettfNome().getText();
 		String cpfDigitado = login.gettfCPF().getText();
 		if(nomeDigitado.isEmpty() || cpfDigitado.isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+			JOptionPane.showMessageDialog(login, "Preencha todos os campos", "Atenção", JOptionPane.WARNING_MESSAGE);
 		}
 			
 			Usuario usuario = user.validarLogin(nomeDigitado, cpfDigitado);
 	        
 	        if(usuario != null) {
-	            JOptionPane.showMessageDialog(null, "Login realizado com sucesso! Bem-vindo, " + usuario.getNome());
+	            JOptionPane.showMessageDialog(login, "Login realizado com sucesso! Bem-vindo, " + usuario.getNome(), "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 	            
 	            if (usuario.isInd()) {
 	                this.navegador.navegarPara("CADASTRO_PRODUTOS");
@@ -49,7 +49,7 @@ public class LoginController {
 	            limparCamposLogin();
 	        }
 	        else {
-	            JOptionPane.showMessageDialog(null, "Usuário ou CPF não encontrados");
+	            JOptionPane.showMessageDialog(login, "Usuário ou CPF não encontrados", "Falha", JOptionPane.ERROR_MESSAGE);
 	        }
 	    }
 	

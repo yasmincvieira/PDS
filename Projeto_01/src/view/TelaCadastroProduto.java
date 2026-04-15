@@ -81,12 +81,12 @@ public class TelaCadastroProduto extends JPanel {
 		panel.add(btnCadastrarP);
 		
 		btnEditar = new JButton("Editar");
-		btnEditar.setBackground(new Color(2, 68, 87));
+		btnEditar.setBackground(new Color(64, 128, 128));
 		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel.add(btnEditar);
 		
 		btnRemover = new JButton("Remover");
-		btnRemover.setBackground(new Color(2, 68, 87));
+		btnRemover.setBackground(new Color(64, 128, 128));
 		btnRemover.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel.add(btnRemover);
 		

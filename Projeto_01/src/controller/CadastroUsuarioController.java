@@ -34,7 +34,7 @@ public class CadastroUsuarioController {
 		boolean isUser = cadastro.getrbUsuario().isSelected();
 		
 		if(nome.isEmpty() || cpf.isEmpty() || (!isAdm && !isUser)) {
-			JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+			JOptionPane.showMessageDialog(cadastro, "Preencha todos os campos", "Atenção", JOptionPane.WARNING_MESSAGE);
 			return; 
 		}
 		
@@ -45,7 +45,7 @@ public class CadastroUsuarioController {
 	  
 	    user.adicionarUsuario(novoUsuario); 
 	    
-	    JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
+	    JOptionPane.showMessageDialog(cadastro, "Usuário cadastrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 	    
 	    this.navegador.navegarPara("LOGIN");
 	    
