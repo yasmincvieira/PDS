@@ -16,10 +16,7 @@ public class Janela extends JFrame {
 	private JPanel contentPane;
 	private CardLayout cardLayout;
 
-
 	
-
-
 	public Janela() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
@@ -40,7 +37,6 @@ public class Janela extends JFrame {
 
 	public void mostrarTela(String nome) {
 		this.cardLayout.show(this.contentPane, nome);
-		this.pack();
 	}
 
 }

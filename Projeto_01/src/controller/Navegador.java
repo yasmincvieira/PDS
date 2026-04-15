@@ -12,6 +12,7 @@ public class Navegador {
 	private LoginController loginController;
 	private TelaCadastroUsuario cadastro;
 	private CadastroUsuarioController cadastroController;
+	private CompraController compraController;
 	
 
 	public Navegador(Janela janela) {
@@ -24,6 +25,9 @@ public class Navegador {
 	}
 	
 	public void navegarPara(String nome) {
+		if (nome.equals("COMPRA") && compraController != null) {
+			compraController.carregarProdutos();
+		}
 		this.janela.mostrarTela(nome);
 	}
 	
@@ -45,6 +49,10 @@ public class Navegador {
 	
 	public void setCadastroController(CadastroUsuarioController cadastroController) {
 		this.cadastroController = cadastroController;	
+	}
+	
+	public void setCompraController(CompraController compraController) {
+		this.compraController = compraController;
 	}
 
 

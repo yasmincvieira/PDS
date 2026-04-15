@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 
 import javax.swing.JRadioButton;
+import java.awt.Color;
 
 public class TelaCadastroUsuario extends JPanel {
 
@@ -26,23 +27,28 @@ public class TelaCadastroUsuario extends JPanel {
 		setLayout(new MigLayout("", "[grow][grow 50][grow][grow]", "[grow][][grow 40][][][][grow 50][grow 30][grow]"));
 		
 		JLabel lblNewLabel = new JLabel("MERCADINHO");
+		lblNewLabel.setForeground(new Color(2, 68, 87));
 		lblNewLabel.setFont(new Font("OCR-A BT", Font.PLAIN, 70));
 		add(lblNewLabel, "cell 1 1 2 1,alignx center");
 		
 		JLabel lblNewLabel_1 = new JLabel("Nome:");
+		lblNewLabel_1.setForeground(new Color(2, 68, 87));
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(lblNewLabel_1, "cell 1 3,alignx center");
 		
 		tfNomeC = new JTextField();
+		tfNomeC.setBackground(new Color(85, 170, 170));
 		tfNomeC.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(tfNomeC, "cell 2 3,growx");
 		tfNomeC.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("CPF:");
+		lblNewLabel_2.setForeground(new Color(2, 68, 87));
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(lblNewLabel_2, "cell 1 5,alignx center");
 		
 		tfCPFC = new JTextField();
+		tfCPFC.setBackground(new Color(85, 170, 170));
 		tfCPFC.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(tfCPFC, "cell 2 5,growx");
 		tfCPFC.setColumns(10);
@@ -51,14 +57,17 @@ public class TelaCadastroUsuario extends JPanel {
 		add(panel, "cell 1 6 2 1,growx,aligny center");
 		
 		JLabel lblNewLabel_3 = new JLabel("Identifique-se:");
+		lblNewLabel_3.setForeground(new Color(2, 68, 87));
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel.add(lblNewLabel_3);
 		
 		rbAdm = new JRadioButton("Administrador");
+		rbAdm.setForeground(new Color(2, 68, 87));
 		rbAdm.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel.add(rbAdm);
 		
 		rbUsuario = new JRadioButton("Usuário");
+		rbUsuario.setForeground(new Color(2, 68, 87));
 		rbUsuario.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel.add(rbUsuario);
 		
@@ -68,6 +77,7 @@ public class TelaCadastroUsuario extends JPanel {
 		
 		
 		btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setBackground(new Color(85, 170, 170));
 		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(btnCadastrar, "cell 1 7 2 1,alignx center");
 

@@ -2,8 +2,10 @@ package main;
 
 import controller.CadastroProdutoController;
 import controller.CadastroUsuarioController;
+import controller.CompraController;
 import controller.LoginController;
 import controller.Navegador;
+import model.ProdutoDAO;
 import model.UsuarioDAO;
 import view.Janela;
 import view.TelaCadastroProduto;
@@ -17,6 +19,7 @@ public class Main {
 		
 		Janela janela = new Janela();
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		ProdutoDAO produtoDAO = new ProdutoDAO();
 		
 		//View
 		TelaLogin telaLogin = new TelaLogin();
@@ -29,7 +32,9 @@ public class Main {
 		LoginController loginController = new LoginController(telaLogin, usuarioDAO, navegador);
 		CadastroProdutoController cadastroProdutoController = new CadastroProdutoController(telaCadastroProduto, new model.ProdutoDAO(), navegador);
 		CadastroUsuarioController cadastroUsuarioController = new CadastroUsuarioController(telaCadastroUsuario, usuarioDAO, navegador);
+		CompraController compraController = new CompraController(telaCompra, produtoDAO, navegador);
 		
+		navegador.setCompraController(compraController);
 		
 		navegador.adicionarPainel("CADASTRO", telaCadastroUsuario);
 		navegador.adicionarPainel("COMPRA", telaCompra);
