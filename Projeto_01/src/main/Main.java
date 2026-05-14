@@ -21,7 +21,6 @@ public class Main {
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		ProdutoDAO produtoDAO = new ProdutoDAO();
 		
-		//View
 		TelaLogin telaLogin = new TelaLogin();
 		TelaCadastroUsuario telaCadastroUsuario = new TelaCadastroUsuario();
 		TelaCompra telaCompra = new TelaCompra();

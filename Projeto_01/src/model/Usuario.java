@@ -6,7 +6,6 @@ public class Usuario {
     private String CPF;
     private boolean ind;
 
-    // Construtores
     public Usuario() {}
 
     public Usuario(int id, String nome, String CPF, boolean ind) {
@@ -16,7 +15,6 @@ public class Usuario {
         this.ind = ind;
     }
 
-    // Getters e Setters
     public int getId() {
         return id;
     }

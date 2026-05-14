@@ -2,7 +2,6 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import model.Usuario;
 import java.sql.Connection;
 import java.sql.DriverManager;

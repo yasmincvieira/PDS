@@ -6,10 +6,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
 import model.Produto;
 import model.ProdutoDAO;
 import model.Usuario;
@@ -36,21 +34,18 @@ public class CompraController {
 
 	private void initController() {
 		telaCompra.adicionarCarrinho(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				adicionarAoCarrinho();
 			}
 		});
 
 		telaCompra.emitirNota(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				emitirNota();
 			}
 		});
 
 		telaCompra.voltar(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				navegador.navegarPara("LOGIN");
 			}
@@ -66,7 +61,6 @@ public class CompraController {
 		DefaultTableModel model = (DefaultTableModel) telaCompra.getTable().getModel();
 		model.setRowCount(0);
 		for (Produto p : listaProdutos) {
-			// Calcula quantos já foram colocados no carrinho
 			int noCarrinho = carrinho.getOrDefault(p, 0);
 			int qtdDisponivel = p.getQuantidade() - noCarrinho;
 			model.addRow(new Object[]{
@@ -88,7 +82,6 @@ public class CompraController {
 
 		Produto produtoSelecionado = listaProdutos.get(linhaSelecionada);
 
-		// Verifica se ainda tem estoque disponível
 		int noCarrinho = carrinho.getOrDefault(produtoSelecionado, 0);
 		if (noCarrinho >= produtoSelecionado.getQuantidade()) {
 			JOptionPane.showMessageDialog(telaCompra,
@@ -97,17 +90,13 @@ public class CompraController {
 			return;
 		}
 
-		// Incrementa no carrinho
 		carrinho.put(produtoSelecionado, noCarrinho + 1);
 		totalCompra += produtoSelecionado.getPreco();
 
-		// Atualiza a tabela refletindo a nova quantidade disponível
 		atualizarTabela();
 
-		// Restaura a seleção na mesma linha
 		telaCompra.getTable().setRowSelectionInterval(linhaSelecionada, linhaSelecionada);
 
-		// Atualiza taDetalhes
 		int qtdNoCarrinho = carrinho.get(produtoSelecionado);
 		int qtdRestante = produtoSelecionado.getQuantidade() - qtdNoCarrinho;
 		telaCompra.getTaDetalhes().setText(
@@ -117,7 +106,6 @@ public class CompraController {
 			"Estoque restante: " + qtdRestante
 		);
 
-		// Atualiza taTotal
 		telaCompra.getTaTotal().setText("Total a pagar: R$ " + String.format("%.2f", totalCompra));
 	}
 

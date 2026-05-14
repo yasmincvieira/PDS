@@ -2,14 +2,12 @@ package view;
 
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import controller.LoginController;
 import controller.Navegador;
 import model.UsuarioDAO;
-
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -84,9 +82,7 @@ public class TelaLogin extends JPanel {
 		btnCadastrarSe.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel.add(btnCadastrarSe);
 		
-		
 	}
-
 	
 	public JTextField gettfNome() {
 		return tfNome;
@@ -116,7 +112,6 @@ public class TelaLogin extends JPanel {
 		this.tfNome.setText("");
 		this.tfCPF.setText("");
 	}
-	
 	
 
 }

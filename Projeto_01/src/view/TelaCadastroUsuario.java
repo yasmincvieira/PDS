@@ -8,7 +8,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-
 import javax.swing.JRadioButton;
 import java.awt.Color;
 
@@ -19,9 +18,6 @@ public class TelaCadastroUsuario extends JPanel {
 	private JRadioButton rbAdm, rbUsuario;
 	private JButton btnCadastrar;
 
-	/**
-	 * Create the panel.
-	 */
 	public TelaCadastroUsuario() {
 		setBounds(100, 100, 900, 600);
 		setLayout(new MigLayout("", "[grow][grow 50][grow][grow]", "[grow][][grow 40][][][][grow 50][grow 30][grow]"));
@@ -113,9 +109,8 @@ public class TelaCadastroUsuario extends JPanel {
 	
 	public void setrbUsuario(JRadioButton rbUsuario) {
 	    	this.rbUsuario = rbUsuario;
-	    }
+	}
 
-    
     public void cadastrar(ActionListener actionListener) {
 		this.btnCadastrar.addActionListener(actionListener);
 	}

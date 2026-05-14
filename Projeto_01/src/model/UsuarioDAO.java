@@ -56,12 +56,25 @@ public class UsuarioDAO {
         return null;
     }
 	
+	public boolean existeCPF(String cpf) {
+        String sql = "SELECT COUNT(*) FROM usuarios WHERE cpf = ?";
+        try (Connection conexao = BancoDeDados.conectar();
+             PreparedStatement pstm = conexao.prepareStatement(sql)) {
+            pstm.setString(1, cpf);
+            try (ResultSet rset = pstm.executeQuery()) {
+                if (rset.next()) {
+                    return rset.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+	
     public List<Usuario> listarUsuarios() {
         String sql = "SELECT * FROM usuarios";
         List<Usuario> usuarios = new ArrayList<>();
-//        Connection conexao = null;
-//        PreparedStatement pstm = null;
-//        ResultSet rset = null;
 
         try (Connection conexao = BancoDeDados.conectar();
                 PreparedStatement pstm = conexao.prepareStatement(sql);

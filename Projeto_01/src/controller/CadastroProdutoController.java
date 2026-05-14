@@ -5,7 +5,6 @@ import view.TelaCadastroProduto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,7 +26,6 @@ public class CadastroProdutoController {
 
     private void initController() {
         telaCadastroProduto.cadastrarProduto(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 if (produtoEmEdicao == null) {
                     cadastrarProduto();
@@ -38,21 +36,18 @@ public class CadastroProdutoController {
         });
 
         telaCadastroProduto.removerProduto(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 removerProduto();
             }
         });
 
         telaCadastroProduto.editarProduto(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 prepararEdicao();
             }
         });
         
         telaCadastroProduto.voltar(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
             	navegador.navegarPara("LOGIN");
             }

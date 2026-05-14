@@ -15,7 +15,6 @@ public class Janela extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private CardLayout cardLayout;
-
 	
 	public Janela() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,9 +27,9 @@ public class Janela extends JFrame {
 		contentPane.setBackground(new Color(240, 240, 240));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
 	
 	}
+	
 	public void adicionarTela(String nome, JPanel tela) {
 		this.contentPane.add(nome, tela);               
 	}

@@ -10,7 +10,6 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-
 import javax.swing.JTextArea;
 import java.awt.Color;
 

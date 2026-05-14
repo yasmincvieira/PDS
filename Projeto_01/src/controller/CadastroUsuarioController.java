@@ -37,6 +37,10 @@ public class CadastroUsuarioController {
 			JOptionPane.showMessageDialog(cadastro, "Preencha todos os campos", "Atenção", JOptionPane.WARNING_MESSAGE);
 			return; 
 		}
+		if (user.existeCPF(cpf)) {
+			JOptionPane.showMessageDialog(cadastro, "O CPF informado já está cadastrado!", "Erro de Cadastro", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 		
 		Usuario novoUsuario = new Usuario();
 	    novoUsuario.setNome(nome);
@@ -52,13 +56,12 @@ public class CadastroUsuarioController {
 	    limparCamposCadastro();
 	}
 	
-	
 	public void limparCamposCadastro() {
 		cadastro.gettfNomeC().setText("");
 		cadastro.gettfCPFC().setText("");
 	}
 	
 		
-	}
+}
 
 
